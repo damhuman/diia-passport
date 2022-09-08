@@ -46,7 +46,7 @@ const App: NextPage = () => {
   const queryError = queryString.get("error");
   const queryCode = queryString.get("code");
   const queryState = queryString.get("state");
-
+  console.log("HERE!@!!!!!", queryState, queryCode, queryError);
   // if Twitter oauth then submit message to other windows and close self
   if ((queryError || queryCode) && queryState && /^twitter-.*/.test(queryState)) {
     // shared message channel between windows (on the same domain)
@@ -101,6 +101,7 @@ const App: NextPage = () => {
   }
   // if Diia oauth then submit message to other windows and close self
   else if ((queryError || queryCode) && queryState && /^diia-.*/.test(queryState)) {
+    console.log("HERE!@!!!!!");
     // shared message channel between windows (on the same domain)
     const channel = new BroadcastChannel("diia_oauth_channel");
     // only continue with the process if a code is returned

@@ -88,7 +88,7 @@ export default function DiiaCard(): JSX.Element {
     const state = "diia-" + generateUID(10);
     setState(state);
     // open new window for authUrl
-    const authUrl = `https://uwallet.netlify.app/?state=${state}`;
+    const authUrl = `https://uwallet.netlify.app/?state=${state}&redirect_uri=${process.env.NEXT_PUBLIC_PASSPORT_DIIA_CALLBACK}`;
     openDiiaOAuthUrl(authUrl);
   }
 
@@ -116,7 +116,6 @@ export default function DiiaCard(): JSX.Element {
   // TODO finish listener and IAM
   // Listener to watch for oauth redirect response on other windows (on the same host)
   function listenForDiiaRedirect(e: { target: string; data: { code: string; state: string } }) {
-    console.log("!!!!!!!");
     // when receiving diia oauth response from a spawned child run fetchVerifiableCredential
     if (e.target === "diia") {
       // pull data from message
