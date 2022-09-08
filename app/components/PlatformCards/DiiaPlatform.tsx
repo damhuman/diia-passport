@@ -87,10 +87,7 @@ export default function DiiaCard(): JSX.Element {
     const state = "diia-" + generateUID(10);
     setState(state);
     // open new window for authUrl
-    // const authUrl = `https://test.id.gov.ua/?response_type=code&scope=identify&client_id=${
-    //   process.env.NEXT_PUBLIC_PASSPORT_DIIA_CLIENT_ID
-    // }&state=diia-${generateUID(10)}&redirect_uri=${process.env.NEXT_PUBLIC_PASSPORT_DIIA_CALLBACK}&auth_type=dig_sign`;
-    const authUrl = 'https://uwallet.netlify.app/?state={state}';
+    const authUrl = `https://uwallet.netlify.app/?state=${state}`;
     openDiiaOAuthUrl(authUrl);
   }
 

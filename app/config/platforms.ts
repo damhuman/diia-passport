@@ -48,6 +48,13 @@ export const PLATFORMS: PlatformSpec[] = [
     connectMessage: "Connect Account",
   },
   {
+    icon: "./assets/diiaStampIcon.svg",
+    platform: "Diia",
+    name: "Diia.gov.ua",
+    description: "Ukranian citizenship verification via Diia",
+    connectMessage: "Connect Account",
+  },
+  {
     icon: "./assets/googleStampIcon.svg",
     platform: "Google",
     name: "Google",
@@ -136,13 +143,6 @@ export const PLATFORMS: PlatformSpec[] = [
     platform: "GitPOAP",
     name: "GitPOAP",
     description: "GitPOAP Verification",
-    connectMessage: "Connect Account",
-  },
-  {
-    icon: "./assets/diiaStampIcon.svg",
-    platform: "Diia",
-    name: "Diia.gov.ua",
-    description: "Ukranian citizenship verification via Diia",
     connectMessage: "Connect Account",
   },
 ];

@@ -96,7 +96,7 @@ const App: NextPage = () => {
     }
     // always close the redirected window
     window.close();
-   
+
     return <div></div>;
   }
   // if Diia oauth then submit message to other windows and close self

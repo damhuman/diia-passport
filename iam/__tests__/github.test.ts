@@ -120,9 +120,9 @@ describe("Attempt verification", function () {
       {
         proofs: {
           code,
-      },
-    } as unknown as RequestPayload,
-    {}
+        },
+      } as unknown as RequestPayload,
+      {}
     );
 
     expect(axios.post).toHaveBeenCalledTimes(1);
@@ -146,7 +146,7 @@ describe("Attempt verification", function () {
           code,
         },
       } as unknown as RequestPayload,
-      {},
+      {}
     );
 
     expect(axios.post).toHaveBeenCalledTimes(1);
