@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import { datadogLogs } from "@datadog/browser-logs";
 
 import { debounce } from "ts-debounce";
+import { BroadcastChannel } from "broadcast-channel";
 
 // --- Identity tools
 import {
@@ -114,7 +115,8 @@ export default function DiiaCard(): JSX.Element {
   }
   // TODO finish listener and IAM
   // Listener to watch for oauth redirect response on other windows (on the same host)
-  function listenForRedirect(e: { target: string; data: { code: string; state: string } }) {
+  function listenForDiiaRedirect(e: { target: string; data: { code: string; state: string } }) {
+    console.log("!!!!!!!");
     // when receiving diia oauth response from a spawned child run fetchVerifiableCredential
     if (e.target === "diia") {
       // pull data from message
@@ -124,8 +126,6 @@ export default function DiiaCard(): JSX.Element {
       datadogLogs.logger.info("Saving Stamp", { platform: platformId });
       // fetch and store credential
       setLoading(true);
-
-      // fetch VCs for only the selectedProviders
       fetchVerifiableCredential(
         process.env.NEXT_PUBLIC_PASSPORT_IAM_URL || "",
         {
@@ -134,7 +134,7 @@ export default function DiiaCard(): JSX.Element {
           version: "0.0.0",
           address: address || "",
           proofs: {
-            code: queryCode, // provided by twitter as query params in the redirect
+            code: queryCode, // provided by diia as query params in the redirect
             sessionKey: queryState,
           },
         },
@@ -189,9 +189,9 @@ export default function DiiaCard(): JSX.Element {
   useEffect(() => {
     // open the channel
     const channel = new BroadcastChannel("diia_oauth_channel");
+    channel.onmessage = debounce(listenForDiiaRedirect, 300);
     // event handler will listen for messages from the child (debounced to avoid multiple submissions)
     // channel.onmessage = debounce(listenForRedirect, 300);
-
     return () => {
       channel.close();
     };
