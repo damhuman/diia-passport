@@ -46,7 +46,6 @@ const App: NextPage = () => {
   const queryError = queryString.get("error");
   const queryCode = queryString.get("code");
   const queryState = queryString.get("state");
-  console.log("HERE!@!!!!!", queryState, queryCode, queryError);
   // if Twitter oauth then submit message to other windows and close self
   if ((queryError || queryCode) && queryState && /^twitter-.*/.test(queryState)) {
     // shared message channel between windows (on the same domain)
