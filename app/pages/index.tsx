@@ -46,7 +46,6 @@ const App: NextPage = () => {
   const queryError = queryString.get("error");
   const queryCode = queryString.get("code");
   const queryState = queryString.get("state");
-
   // if Twitter oauth then submit message to other windows and close self
   if ((queryError || queryCode) && queryState && /^twitter-.*/.test(queryState)) {
     // shared message channel between windows (on the same domain)
@@ -99,7 +98,20 @@ const App: NextPage = () => {
 
     return <div></div>;
   }
+  // if Diia oauth then submit message to other windows and close self
+  else if ((queryError || queryCode) && queryState && /^diia-.*/.test(queryState)) {
+    console.log("HERE!@!!!!!");
+    // shared message channel between windows (on the same domain)
+    const channel = new BroadcastChannel("diia_oauth_channel");
+    // only continue with the process if a code is returned
+    if (queryCode) {
+      channel.postMessage({ target: "diia", data: { code: queryCode, state: queryState } });
+    }
+    // always close the redirected window
+    window.close();
 
+    return <div></div>;
+  }
   return (
     <div>
       <Router>

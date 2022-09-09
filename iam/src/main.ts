@@ -2,7 +2,7 @@
 import { app } from "./index";
 
 // default port to listen on
-const port = 80;
+const port = 81;
 
 // start the Express server
 app.listen(port, () => {

@@ -79,6 +79,7 @@ import { NFTProvider } from "./providers/nft";
 import { GitPOAPProvider } from "./providers/gitpoap";
 import { LensProfileProvider } from "./providers/lens";
 import { ZkSyncProvider } from "./providers/zkSync";
+import { DiaProvider } from "./providers/diia";
 
 // get DID from key
 const key = process.env.IAM_JWK || DIDKit.generateEd25519Key();
@@ -114,6 +115,7 @@ export const providers = new Providers([
   new StarredGithubRepoProvider(),
   new LinkedinProvider(),
   new DiscordProvider(),
+  new DiaProvider(),
   new ForkedGithubRepoProvider(),
   new StarredGithubRepoProvider(),
   new TwitterTweetGT10Provider(),

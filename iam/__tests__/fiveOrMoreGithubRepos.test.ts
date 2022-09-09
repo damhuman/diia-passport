@@ -51,7 +51,7 @@ describe("Attempt verification", function () {
           code,
         },
       } as unknown as RequestPayload,
-      {},
+      {}
     );
 
     // Check the request to get the token
@@ -97,7 +97,7 @@ describe("Attempt verification", function () {
           code,
         },
       } as unknown as RequestPayload,
-      {},
+      {}
     );
 
     expect(fiveOrMoreGithubReposPayload).toMatchObject({ valid: false });
@@ -118,7 +118,7 @@ describe("Attempt verification", function () {
           code,
         },
       } as unknown as RequestPayload,
-      {},
+      {}
     );
 
     expect(fiveOrMoreGithubReposPayload).toMatchObject({ valid: false });
@@ -145,7 +145,7 @@ describe("Attempt verification", function () {
           code,
         },
       } as unknown as RequestPayload,
-      {},
+      {}
     );
 
     expect(fiveOrMoreGithubReposPayload).toMatchObject({ valid: false });
@@ -166,7 +166,7 @@ describe("Attempt verification", function () {
           code,
         },
       } as unknown as RequestPayload,
-      {},
+      {}
     );
 
     expect(fiveOrMoreGithubReposPayload).toMatchObject({ valid: false });
